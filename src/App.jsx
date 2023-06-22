@@ -9,7 +9,7 @@ import prod2 from "./assets/prod2.jpg";
 import prod3 from "./assets/prod3.jpg";
 import prod4 from "./assets/prod4.jpg";
 import Content from "./component/Content";
-import Cart from "./component/Cart";
+// import { useState } from "react";
 
 const navItems = [
   {
@@ -54,11 +54,12 @@ const productImages = [
 ];
 
 function App() {
+  // const [cartItems, setCartItems] = useState([]);
+
   return (
     <>
       <div className="relative md:static">
         <Header navItems={navItems} />
-        {/* <Cart /> */}
         <CarouselMobile products={productImages} />
         <Content />
       </div>

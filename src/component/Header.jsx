@@ -4,17 +4,26 @@ import logo from "../assets/logo.svg";
 import cart from "../assets/icon-cart.svg";
 import avatar from "../assets/image-avatar.png";
 import menu from "../assets/icon-menu.svg";
+import Cart from "./Cart";
 
 const Header = ({ navItems }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isDrawOpen, setIsDrawOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   const toggleDrawer = () => {
-    setIsOpen((oldVal) => !oldVal);
+    setIsCartOpen(false);
+    setIsDrawOpen((oldVal) => !oldVal);
+  };
+
+  const toggleCart = () => {
+    setIsDrawOpen(false);
+    setIsCartOpen((oldVal) => !oldVal);
   };
 
   return (
     <div
       className="
+        relative
         flex
         justify-between
         m-auto
@@ -28,8 +37,11 @@ const Header = ({ navItems }) => {
         md:px-4
         md:border-gray-100
         xl:px-0
+        xl:static
+        2xl:relative
       "
     >
+      <Cart isHidden={!isCartOpen} />
       <div
         className="
         flex 
@@ -53,7 +65,7 @@ const Header = ({ navItems }) => {
         </a>
         <nav
           className={`
-            ${isOpen ? "hidden" : "block"}
+            ${isDrawOpen ? "block" : "hidden"}
             p-2
             fixed
             h-screen
@@ -63,6 +75,7 @@ const Header = ({ navItems }) => {
             left-0
             bg-white
             shadow-[0_0_0_100vw_rgba(0,0,0,0.4)]
+            md:z-0
             md:shadow-none
             md:static
             md:flex 
@@ -140,7 +153,7 @@ const Header = ({ navItems }) => {
         md:space-x-7
       "
       >
-        <button className="h-10 w-10">
+        <button className="h-10 w-10" onClick={toggleCart}>
           <img src={cart} alt="cart" className="m-auto" />
         </button>
         <button
