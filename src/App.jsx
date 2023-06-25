@@ -86,16 +86,17 @@ function App() {
         {lboxOpen && (
           <div
             className="
-            absolute 
-            z-50 
-            w-full 
-            min-h-[100vh] 
-            bg-[rgba(0,0,0,0.5)]
-            flex
-            flex-col
-            justify-center
-            items-center
-          "
+              hidden
+              absolute 
+              z-50 
+              w-full 
+              min-h-[100vh] 
+              bg-[rgba(0,0,0,0.5)]
+              md:flex
+              md:flex-col
+              md:justify-center
+              md:items-center
+            "
           >
             <div className="max-w-2xl m-16">
               <div className="flex justify-end mb-6">
@@ -112,10 +113,7 @@ function App() {
                 </button>
               </div>
 
-              <Carousel
-                name={"lightbox"}
-                settings={{ ...baseSettings, navbarPosition: "mid" }}
-              />
+              <Carousel settings={{ ...baseSettings, navbarPosition: "mid" }} />
             </div>
           </div>
         )}
@@ -136,9 +134,16 @@ function App() {
             xl:gap-28
           "
         >
-          <div className="max-w-full md:max-w-md md:pl-6">
+          <div
+            className="
+              min-w-full 
+              md:pl-6
+              md:min-w-0 
+              md:max-w-lg 
+              lg:min-w-[480px] 
+            "
+          >
             <Carousel
-              name="desktop"
               settings={{
                 ...baseSettings,
                 hasNavbar: false,
@@ -146,7 +151,6 @@ function App() {
               className={"hidden md:block"}
             />
             <Carousel
-              name="mobile"
               settings={{
                 ...baseSettings,
                 hasRoundedCorner: false,

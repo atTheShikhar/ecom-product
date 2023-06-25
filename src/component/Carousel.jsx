@@ -7,8 +7,7 @@ const navPostions = {
   outer: "-4rem",
 };
 
-const Carousel = ({ name, settings, className }) => {
-  console.log(name, settings);
+const Carousel = ({ settings, className }) => {
   const buttons = [
     {
       icon: "../src/assets/icon-prev.svg",
@@ -41,13 +40,13 @@ const Carousel = ({ name, settings, className }) => {
     <section
       className={`
         mx-auto
+        max-w-full
         ${className}
       `}
     >
       <section
         className="
           relative
-          w-full
           aspect-square
         "
       >
@@ -95,17 +94,13 @@ const Carousel = ({ name, settings, className }) => {
                 ${settings.hasRoundedCorner ? "rounded-2xl" : "rounded-none"}
               `}
             >
-              <img
-                src={item.image}
-                className="w-full h-full"
-                alt={`product number ${idx}`}
-              />
+              <img src={item.image} alt={`product number ${idx}`} />
             </li>
           ))}
         </ul>
       </section>
-      {settings.hasThumbnail ? (
-        <section className="mt-8 max-w-full">
+      {settings.hasThumbnail && (
+        <section className="mt-8">
           <ul
             className="
               overflow-x-scroll
@@ -138,15 +133,12 @@ const Carousel = ({ name, settings, className }) => {
             })}
           </ul>
         </section>
-      ) : (
-        <></>
       )}
     </section>
   );
 };
 
 Carousel.propTypes = {
-  name: PropTypes.string,
   settings: PropTypes.shape({
     images: PropTypes.arrayOf(
       PropTypes.shape({
