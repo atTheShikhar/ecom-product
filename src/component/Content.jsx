@@ -1,6 +1,8 @@
-const Content = () => {
+import PropTypes from "prop-types";
+
+const Content = ({ className }) => {
   return (
-    <div className="m-auto p-6 mb-12">
+    <div className={`mx-auto px-6 mb-12 ${className}`}>
       <h2
         className="
           uppercase
@@ -75,7 +77,16 @@ const Content = () => {
         </div>
       </section>
 
-      <section>
+      <section
+        className="
+          flex 
+          flex-col 
+          justify-center 
+          items-center 
+          gap-5
+          lg:flex-row
+        "
+      >
         <div
           className="
             flex
@@ -85,6 +96,7 @@ const Content = () => {
             bg-light-grayish-blue
             rounded-xl
             h-14
+            lg:basis-[35%]
           "
         >
           <button
@@ -119,9 +131,9 @@ const Content = () => {
             w-full
             rounded-xl
             space-x-4
-            mt-5
             drop-shadow-3xl
             h-14
+            lg:basis-[65%]
           "
         >
           <img src="../src/assets/icon-cart.svg" alt="cart" />
@@ -137,6 +149,10 @@ const Content = () => {
       </section>
     </div>
   );
+};
+
+Content.propTypes = {
+  className: PropTypes.string,
 };
 
 export default Content;
