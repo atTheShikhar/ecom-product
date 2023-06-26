@@ -70,6 +70,17 @@ const productImages = [
   },
 ];
 
+const product = {
+  itemId: 1,
+  brand: "Sneaker Company",
+  name: "Fall Limited Edition Sneakers",
+  desc: "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer.",
+  preOfferUnitPrice: 250.0,
+  offerPercent: 50,
+  unitPrice: 125.0,
+  currency: "$",
+};
+
 function App() {
   const [lboxOpen, setLboxopen] = useState(true);
   const baseSettings = {
@@ -159,7 +170,7 @@ function App() {
               className={"block md:hidden"}
             />
           </div>
-          <Content className={""} />
+          <Content product={product} />
         </div>
       </div>
     </>

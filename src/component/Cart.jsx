@@ -1,8 +1,19 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { removeItem } from "../redux_slices/cartSlice";
+import { formatPrice } from "../utils";
 
 const Cart = ({ isHidden }) => {
-  const [isEmpty, setIsEmpty] = useState(true);
+  const cartItems = useSelector((state) => state.cart.items);
+  const dispatch = useDispatch();
+
+  const removeFromCart = (itemId) => {
+    dispatch(
+      removeItem({
+        itemId: itemId,
+      })
+    );
+  };
 
   return (
     <div
@@ -36,58 +47,64 @@ const Cart = ({ isHidden }) => {
       >
         Cart
       </div>
-      {isEmpty ? (
-        <div
-          className="
-            flex
-            justify-center
-            items-center
-            min-h-[200px]
-            text-dark-grayish-blue
-            text-lg
-          "
-        >
-          <b>Your cart is empty.</b>
-        </div>
-      ) : (
+      {cartItems?.length > 0 ? (
         <div>
-          <div className="min-h-14 p-6 flex items-center justify-between">
-            <a
-              href="#"
-              className="
-              flex
-              items-center
-              justify-start
-            "
+          {cartItems.map((item) => (
+            <div
+              key={item.itemId}
+              className="min-h-14 p-6 flex items-center justify-between"
             >
-              <img
-                src="../src/assets/prod1thumb.jpg"
-                alt="product"
+              <a
+                href="#"
                 className="
-                h-14
-                rounded-md
-              "
-              />
-              <div
-                className="
-              mx-5
-              font-semibold
-              text-xl
-              text-gray-400
-            "
+                  flex
+                  items-center
+                  justify-start
+                "
               >
-                <h2 className="text-ellipsis">Fall Limited Edition Sneakers</h2>
-                <h3>
-                  <span>$125.00 x 3</span>
-                  &nbsp;
-                  <span className="text-very-dark-blue font-bold">$375.00</span>
-                </h3>
-              </div>
-            </a>
-            <button className="p-1">
-              <img src="../src/assets/icon-delete.svg" alt="remove from cart" />
-            </button>
-          </div>
+                <img
+                  src="../src/assets/prod1thumb.jpg"
+                  alt="product"
+                  className="
+                    h-14
+                    rounded-md
+                  "
+                />
+                <div
+                  className="
+                    mx-5
+                    font-semibold
+                    text-xl
+                    text-gray-400
+                  "
+                >
+                  <h2 className="text-ellipsis">{item.name}</h2>
+                  <h3>
+                    <span>
+                      {item.currency}
+                      {formatPrice(item.unitPrice)} x {item.itemCount}
+                    </span>
+                    &nbsp;
+                    <span className="text-very-dark-blue font-bold">
+                      {item.currency}
+                      {formatPrice(item.unitPrice * item.itemCount)}
+                    </span>
+                  </h3>
+                </div>
+              </a>
+              <button
+                className="p-1"
+                onClick={() => {
+                  removeFromCart(item.itemId);
+                }}
+              >
+                <img
+                  src="../src/assets/icon-delete.svg"
+                  alt="remove from cart"
+                />
+              </button>
+            </div>
+          ))}
           <div className="px-6 pt-1 pb-9">
             <button
               className="
@@ -104,6 +121,19 @@ const Cart = ({ isHidden }) => {
               Checkout
             </button>
           </div>
+        </div>
+      ) : (
+        <div
+          className="
+            flex
+            justify-center
+            items-center
+            min-h-[200px]
+            text-dark-grayish-blue
+            text-lg
+          "
+        >
+          <b>Your cart is empty.</b>
         </div>
       )}
     </div>

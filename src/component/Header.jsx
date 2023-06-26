@@ -5,8 +5,14 @@ import cart from "../assets/icon-cart.svg";
 import avatar from "../assets/image-avatar.png";
 import menu from "../assets/icon-menu.svg";
 import Cart from "./Cart";
+import { useSelector } from "react-redux";
 
 const Header = ({ navItems }) => {
+  const itemCount = useSelector((state) => {
+    return state.cart.items.reduce((prev, curr) => {
+      return prev + curr.itemCount;
+    }, 0);
+  });
   const [isDrawOpen, setIsDrawOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
@@ -153,7 +159,32 @@ const Header = ({ navItems }) => {
         md:space-x-7
       "
       >
-        <button className="h-10 w-10" onClick={toggleCart}>
+        <button
+          className="
+            h-10 
+            w-10 
+            relative
+          "
+          onClick={toggleCart}
+        >
+          {itemCount > 0 && (
+            <span
+              className="
+                absolute 
+                top-0 
+                right-0 
+                text-sm
+                leading-3
+                bg-orange
+                px-2
+                py-1
+                font-semibold
+                rounded-xl
+              "
+            >
+              {itemCount}
+            </span>
+          )}
           <img src={cart} alt="cart" className="m-auto" />
         </button>
         <button

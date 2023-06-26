@@ -1,6 +1,25 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addItems } from "../redux_slices/cartSlice";
+import { formatPrice } from "../utils";
 
-const Content = ({ className }) => {
+const Content = ({ className, product }) => {
+  const [itemCount, setCount] = useState(1);
+  const dispatch = useDispatch();
+
+  const addToCart = () => {
+    dispatch(
+      addItems({
+        itemId: product.itemId,
+        name: product.name,
+        unitPrice: product.unitPrice,
+        itemCount: itemCount > 0 ? itemCount : 1,
+        currency: product.currency,
+      })
+    );
+  };
+
   return (
     <div className={`mx-auto px-6 mb-12 ${className}`}>
       <h2
@@ -12,41 +31,44 @@ const Content = ({ className }) => {
           tracking-widest
         "
       >
-        Sneaker Company
+        {product.brand}
       </h2>
       <h1
         className="
-          text-4xl
+          text-5xl
           font-bold
           my-4
           text-very-dark-blue
         "
       >
-        Fall Limited Edition Sneakers
+        {product.name}
       </h1>
       <p
         className="
-          text-base
+          text-lg
           text-dark-grayish-blue
           font-medium
+          mt-8
         "
       >
-        These low-profile sneakers are your perfect casual wear companion.
-        Featuring a durable rubber outer sole, they&apos;ll withstand everything
-        the weather can offer.
+        {product.desc}
       </p>
 
       <section
         className="
-        my-6 
+        my-8
         flex 
         justify-between 
         items-center 
+        md:flex-col
+        md:items-start
+        md:gap-2
       "
       >
         <div className="flex items-center space-x-4">
           <span className="text-3xl font-bold text-very-dark-blue">
-            $125.00
+            {product.currency}
+            {formatPrice(product.unitPrice)}
           </span>
           <span
             className="
@@ -62,7 +84,7 @@ const Content = ({ className }) => {
             h-7
           "
           >
-            50%
+            {product.offerPercent}%
           </span>
         </div>
 
@@ -71,9 +93,11 @@ const Content = ({ className }) => {
             font-bold
             line-through
             text-grayish-blue
+            text-lg
           "
         >
-          $250.00
+          {product.currency}
+          {formatPrice(product.preOfferUnitPrice)}
         </div>
       </section>
 
@@ -105,18 +129,29 @@ const Content = ({ className }) => {
               flex
               justify-center
               items-center
-           "
+            "
+            onClick={() => {
+              setCount((old) => {
+                if (old <= 0) return 0;
+                return --old;
+              });
+            }}
           >
             <img src="../src/assets/icon-minus.svg" alt="decrease item count" />
           </button>
-          <div className="font-bold">0</div>
+          <div className="font-bold">{itemCount}</div>
           <button
             className="
               p-5
               flex
               justify-center
               items-center
-           "
+            "
+            onClick={() => {
+              setCount((old) => {
+                return ++old;
+              });
+            }}
           >
             <img src="../src/assets/icon-plus.svg" alt="increase item count" />
           </button>
@@ -135,13 +170,14 @@ const Content = ({ className }) => {
             h-14
             lg:basis-[65%]
           "
+          onClick={addToCart}
         >
           <img src="../src/assets/icon-cart.svg" alt="cart" />
           <span
             className="
-            text-white
-            font-bold
-          "
+              text-white
+              font-bold
+            "
           >
             Add to cart
           </span>
@@ -153,6 +189,16 @@ const Content = ({ className }) => {
 
 Content.propTypes = {
   className: PropTypes.string,
+  product: PropTypes.shape({
+    itemId: PropTypes.number,
+    brand: PropTypes.string,
+    name: PropTypes.string,
+    desc: PropTypes.string,
+    preOfferUnitPrice: PropTypes.number,
+    offerPercent: PropTypes.number,
+    unitPrice: PropTypes.number,
+    currency: PropTypes.string,
+  }),
 };
 
 export default Content;
