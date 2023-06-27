@@ -38,6 +38,12 @@ const Carousel = ({ settings, className }) => {
     });
   };
 
+  const gotoSlide = (idx) => {
+    if (idx >= 0 || idx < settings.images.length) {
+      setActive(idx);
+    }
+  };
+
   return (
     <section
       className={`
@@ -111,7 +117,7 @@ const Carousel = ({ settings, className }) => {
         <section className="mt-8">
           <ul
             className="
-              overflow-x-scroll
+              overflow-x-auto
               whitespace-nowrap
             "
           >
@@ -119,6 +125,9 @@ const Carousel = ({ settings, className }) => {
               return (
                 <li
                   key={idx}
+                  onClick={() => {
+                    gotoSlide(idx);
+                  }}
                   className="
                     mx-4
                     inline-block
@@ -127,12 +136,13 @@ const Carousel = ({ settings, className }) => {
                     overflow-hidden
                     bg-grayish-blue
                     rounded-lg
+                    cursor-pointer
                   "
                 >
                   <img
                     className="
-                      object-contain
-                    "
+                        object-contain
+                      "
                     src={img.thumbnail}
                     alt="image thumbnail"
                   />

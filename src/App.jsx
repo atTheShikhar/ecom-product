@@ -52,22 +52,6 @@ const productImages = [
     image: prod4,
     thumbnail: prod4thumb,
   },
-  {
-    image: prod1,
-    thumbnail: prod1thumb,
-  },
-  {
-    image: prod2,
-    thumbnail: prod2thumb,
-  },
-  {
-    image: prod3,
-    thumbnail: prod3thumb,
-  },
-  {
-    image: prod4,
-    thumbnail: prod4thumb,
-  },
 ];
 
 const product = {
