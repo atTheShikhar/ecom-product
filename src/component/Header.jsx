@@ -62,87 +62,95 @@ const Header = ({ navItems }) => {
         >
           <img src={logo} alt="sneakers logo" />
         </a>
-        <nav
+
+        <div
           className={`
-            ${activeOverlay === "MENU" ? "block" : "hidden"}
-            p-2
-            fixed
-            h-screen
-            min-w-[65%]
-            z-50
-            bottom-0
-            left-0
-            bg-white
-            shadow-[0_0_0_100vw_rgba(0,0,0,0.4)]
-            md:z-0
-            md:shadow-none
-            md:static
-            md:flex 
-            md:h-32 
-            md:grow
-          `}
+              ${activeOverlay === "MENU" ? "block" : "hidden"}
+              fixed
+              h-screen
+              w-full
+              z-50
+              bottom-0
+              left-0
+              bg-[rgba(0,0,0,0.4)]
+              md:z-0
+              md:static
+              md:flex
+              md:h-auto
+         `}
         >
-          <button
-            className="p-4 md:hidden"
-            onClick={() => toggleOverlay("MENU")}
-          >
-            <img src="../src/assets/icon-close.svg" alt="close menu" />
-          </button>
-          <ul
-            className="
-              list-none
-              mt-6
-              pl-4
-              flex
-              flex-col
-              justify-center 
-              font-bold
-              space-y-4
-              text-lg
-              text-very-dark-blue
-              md:flex-row
-              md:mt-0
-              md:pl-0
-              md:space-y-0
-              md:font-normal 
-              md:text-gray-500 
-              md:items-center 
-              md:justify-around
-              md:mx-5
+          <nav
+            className={`
+              bg-white
+              max-w-[65%]
+              h-full
+              p-2
+              md:max-w-none
               md:grow
-              md:max-w-lg
-            "
+            `}
           >
-            {navItems.map((val) => {
-              return (
-                <li
-                  key={val.name}
-                  className="
-                    md:relative
-                  "
-                >
-                  <a
+            <button
+              className="p-4 md:hidden"
+              onClick={() => toggleOverlay("MENU")}
+            >
+              <img src="../src/assets/icon-close.svg" alt="close menu" />
+            </button>
+            <ul
+              className="
+                list-none
+                mt-6
+                pl-4
+                flex
+                flex-col
+                justify-center
+                font-bold
+                space-y-4
+                text-lg
+                text-very-dark-blue
+                md:flex-row
+                md:mt-0
+                md:pl-0
+                md:space-y-0
+                md:font-normal
+                md:text-gray-500
+                md:items-center
+                md:justify-around
+                md:mx-5
+                md:grow
+                md:max-w-lg
+              "
+            >
+              {navItems.map((val) => {
+                return (
+                  <li
+                    key={val.name}
                     className="
-                      md:before:absolute
-                      md:before:content-['']
-                    md:before:bg-orange
-                      md:before:h-1
-                      md:before:w-full
-                      md:before:top-[75px]
-                      md:before:scale-x-0
-                      md:before:scale-y-100
-                      md:before:transition-transform
-                      md:hover:before:scale-100
+                      md:relative
                     "
-                    href={val.link}
                   >
-                    {val.name}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+                    <a
+                      className="
+                        md:before:absolute
+                        md:before:content-['']
+                      md:before:bg-orange
+                        md:before:h-1
+                        md:before:w-full
+                        md:before:top-[75px]
+                        md:before:scale-x-0
+                        md:before:scale-y-100
+                        md:before:transition-transform
+                        md:hover:before:scale-100
+                      "
+                      href={val.link}
+                    >
+                      {val.name}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        </div>
       </div>
 
       <div
