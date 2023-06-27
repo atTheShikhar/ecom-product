@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import PropTypes from "prop-types";
 import logo from "../assets/logo.svg";
 import cart from "../assets/icon-cart.svg";
@@ -64,6 +63,7 @@ const Header = ({ navItems }) => {
         </a>
 
         <div
+          onClick={() => toggleOverlay("MENU")}
           className={`
               ${activeOverlay === "MENU" ? "block" : "hidden"}
               fixed
@@ -80,6 +80,7 @@ const Header = ({ navItems }) => {
          `}
         >
           <nav
+            onClick={(e) => e.stopPropagation()}
             className={`
               bg-white
               max-w-[65%]
