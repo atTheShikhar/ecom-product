@@ -1,12 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
 import { removeItems } from "../redux_slices/cartSlice";
-import useOverlay from "../hooks/useOverlay";
 import { formatPrice } from "../utils";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
-  const { activeOverlay } = useOverlay();
 
   const removeFromCart = (itemId) => {
     dispatch(
@@ -18,7 +16,6 @@ const Cart = () => {
 
   return (
     <div
-      style={{ display: activeOverlay !== "CART" ? "none" : "block" }}
       className="
         absolute
         z-30

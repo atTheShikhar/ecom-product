@@ -114,9 +114,10 @@ const Carousel = ({ settings, className }) => {
         </ul>
       </section>
       {settings.hasThumbnail && (
-        <section className="mt-8">
+        <section className="mt-6 flex justify-center">
           <ul
             className="
+              py-2
               overflow-x-auto
               whitespace-nowrap
             "
@@ -128,21 +129,24 @@ const Carousel = ({ settings, className }) => {
                   onClick={() => {
                     gotoSlide(idx);
                   }}
-                  className="
+                  className={`
                     mx-4
                     inline-block
                     aspect-square
                     w-20
                     overflow-hidden
-                    bg-grayish-blue
+                    bg-white
                     rounded-lg
                     cursor-pointer
-                  "
+                    ${idx === active && "outline outline-3 outline-orange"}
+                  `}
                 >
                   <img
-                    className="
-                        object-contain
-                      "
+                    className={`
+                      object-contain
+                      bg-white
+                      ${idx === active && "opacity-50"}
+                    `}
                     src={img.thumbnail}
                     alt="image thumbnail"
                   />

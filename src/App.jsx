@@ -81,6 +81,9 @@ function App() {
       <div className="relative md:static">
         {activeOverlay === "LIGHTBOX" && (
           <div
+            onClick={() => {
+              toggleOverlay("LIGHTBOX");
+            }}
             className="
               hidden
               absolute 
@@ -94,7 +97,12 @@ function App() {
               md:items-center
             "
           >
-            <div className="max-w-2xl m-16">
+            <div
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+              className="w-full max-w-2xl m-16"
+            >
               <div className="flex justify-end mb-6">
                 <button onClick={() => toggleOverlay("LIGHTBOX")}>
                   <img

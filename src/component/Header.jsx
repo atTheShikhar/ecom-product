@@ -36,7 +36,7 @@ const Header = ({ navItems }) => {
         2xl:relative
       "
     >
-      <Cart />
+      {activeOverlay === "CART" && <Cart />}
       <div
         className="
         flex 
