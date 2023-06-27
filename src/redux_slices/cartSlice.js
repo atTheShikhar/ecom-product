@@ -31,15 +31,14 @@ export const cartSlice = createSlice({
         };
       }
     },
-    removeItem: (state, action) => {
-      const index = state.items.findIndex(
-        (item) => item.itemId === action.payload.itemId
+    removeItems: (state, action) => {
+      state.items = state.items.filter(
+        (item) => item.itemId !== action.payload.itemId
       );
-      if (index >= 0) state.items.splice(index, 1);
     },
   },
 });
 
-export const { addItems, removeItem } = cartSlice.actions;
+export const { addItems, removeItems } = cartSlice.actions;
 
 export default cartSlice.reducer;

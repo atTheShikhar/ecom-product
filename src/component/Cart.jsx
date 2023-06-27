@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
-import { removeItem } from "../redux_slices/cartSlice";
+import { removeItems } from "../redux_slices/cartSlice";
 import { formatPrice } from "../utils";
 
 const Cart = ({ isHidden }) => {
@@ -9,7 +9,7 @@ const Cart = ({ isHidden }) => {
 
   const removeFromCart = (itemId) => {
     dispatch(
-      removeItem({
+      removeItems({
         itemId: itemId,
       })
     );

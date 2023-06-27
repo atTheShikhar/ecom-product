@@ -180,6 +180,7 @@ const Header = ({ navItems }) => {
                 py-1
                 font-semibold
                 rounded-xl
+                text-white
               "
             >
               {itemCount}
