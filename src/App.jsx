@@ -138,8 +138,8 @@ function App() {
             className="
               min-w-full 
               md:pl-6
-              md:min-w-0 
               md:max-w-lg 
+              md:min-w-[50%]
               lg:min-w-[480px] 
             "
           >

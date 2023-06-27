@@ -35,20 +35,24 @@ const Content = ({ className, product }) => {
       </h2>
       <h1
         className="
-          text-5xl
+          text-4xl
           font-bold
-          my-4
           text-very-dark-blue
+          my-2
+          md:my-4
+          lg:text-5xl
         "
       >
         {product.name}
       </h1>
       <p
         className="
-          text-lg
           text-dark-grayish-blue
           font-medium
-          mt-8
+          text-base
+          mt-6
+          md:mt-8
+          lg:text-lg
         "
       >
         {product.desc}
