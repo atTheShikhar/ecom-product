@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 /*
-example item:
+example state element:
     {
         itemId: <number>,
         name: <string>,

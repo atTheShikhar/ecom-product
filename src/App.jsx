@@ -10,7 +10,7 @@ import prod3 from "./assets/prod3.jpg";
 import prod4 from "./assets/prod4.jpg";
 import crossIcon from "./assets/icon-close.svg";
 import Content from "./component/Content";
-import { useState } from "react";
+import useOverlay from "./hooks/useOverlay";
 
 const navItems = [
   {
@@ -82,7 +82,8 @@ const product = {
 };
 
 function App() {
-  const [lboxOpen, setLboxopen] = useState(true);
+  const { activeOverlay, toggleOverlay } = useOverlay();
+
   const baseSettings = {
     images: productImages,
     hasNavbar: true,
@@ -94,7 +95,7 @@ function App() {
   return (
     <>
       <div className="relative md:static">
-        {lboxOpen && (
+        {activeOverlay === "LIGHTBOX" && (
           <div
             className="
               hidden
@@ -111,11 +112,7 @@ function App() {
           >
             <div className="max-w-2xl m-16">
               <div className="flex justify-end mb-6">
-                <button
-                  onClick={() => {
-                    setLboxopen(false);
-                  }}
-                >
+                <button onClick={() => toggleOverlay("LIGHTBOX")}>
                   <img
                     src={crossIcon}
                     className="brightness-0 invert w-4"
@@ -158,6 +155,7 @@ function App() {
               settings={{
                 ...baseSettings,
                 hasNavbar: false,
+                canOpenLightbox: true,
               }}
               className={"hidden md:block"}
             />

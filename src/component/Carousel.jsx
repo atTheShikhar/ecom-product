@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import useOverlay from "../hooks/useOverlay";
 
 const navPostions = {
   inner: "1rem",
@@ -24,6 +25,7 @@ const Carousel = ({ settings, className }) => {
   ];
 
   const [active, setActive] = useState(0);
+  const { toggleOverlay } = useOverlay();
 
   const changeSlide = (isNext) => {
     const offset = isNext ? 1 : -1;
@@ -84,6 +86,11 @@ const Carousel = ({ settings, className }) => {
           {settings.images.map((item, idx) => (
             <li
               key={idx}
+              onClick={() => {
+                if (settings.canOpenLightbox) {
+                  toggleOverlay("LIGHTBOX");
+                }
+              }}
               className={`
                 absolute
                 ${active === idx ? "opacity-100" : "opacity-0"}
@@ -91,6 +98,7 @@ const Carousel = ({ settings, className }) => {
                 w-full
                 h-full
                 overflow-hidden
+                ${settings.canOpenLightbox ? "cursor-pointer" : "cursor-auto"}
                 ${settings.hasRoundedCorner ? "rounded-2xl" : "rounded-none"}
               `}
             >
@@ -149,6 +157,7 @@ Carousel.propTypes = {
     hasThumbnail: PropTypes.bool,
     hasNavbar: PropTypes.bool,
     hasRoundedCorner: PropTypes.bool,
+    canOpenLightbox: PropTypes.bool,
     navbarPosition: PropTypes.oneOf(["inner", "mid", "outer"]),
   }),
   className: PropTypes.string,

@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import PropTypes from "prop-types";
 import logo from "../assets/logo.svg";
 import cart from "../assets/icon-cart.svg";
@@ -6,6 +6,7 @@ import avatar from "../assets/image-avatar.png";
 import menu from "../assets/icon-menu.svg";
 import Cart from "./Cart";
 import { useSelector } from "react-redux";
+import useOverlay from "../hooks/useOverlay";
 
 const Header = ({ navItems }) => {
   const itemCount = useSelector((state) => {
@@ -13,18 +14,7 @@ const Header = ({ navItems }) => {
       return prev + curr.itemCount;
     }, 0);
   });
-  const [isDrawOpen, setIsDrawOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false);
-
-  const toggleDrawer = () => {
-    setIsCartOpen(false);
-    setIsDrawOpen((oldVal) => !oldVal);
-  };
-
-  const toggleCart = () => {
-    setIsDrawOpen(false);
-    setIsCartOpen((oldVal) => !oldVal);
-  };
+  const { activeOverlay, toggleOverlay } = useOverlay();
 
   return (
     <div
@@ -47,7 +37,7 @@ const Header = ({ navItems }) => {
         2xl:relative
       "
     >
-      <Cart isHidden={!isCartOpen} />
+      <Cart />
       <div
         className="
         flex 
@@ -56,7 +46,10 @@ const Header = ({ navItems }) => {
         md:grow
       "
       >
-        <button className="p-4 cursor-pointer md:hidden" onClick={toggleDrawer}>
+        <button
+          className="p-4 cursor-pointer md:hidden"
+          onClick={() => toggleOverlay("MENU")}
+        >
           <img src={menu} alt="menu" />
         </button>
         <a
@@ -71,7 +64,7 @@ const Header = ({ navItems }) => {
         </a>
         <nav
           className={`
-            ${isDrawOpen ? "block" : "hidden"}
+            ${activeOverlay === "MENU" ? "block" : "hidden"}
             p-2
             fixed
             h-screen
@@ -89,7 +82,10 @@ const Header = ({ navItems }) => {
             md:grow
           `}
         >
-          <button className="p-4 md:hidden" onClick={toggleDrawer}>
+          <button
+            className="p-4 md:hidden"
+            onClick={() => toggleOverlay("MENU")}
+          >
             <img src="../src/assets/icon-close.svg" alt="close menu" />
           </button>
           <ul
@@ -151,13 +147,13 @@ const Header = ({ navItems }) => {
 
       <div
         className="
-        flex 
-        justify-end 
-        items-center 
-        space-x-3
-        sm:space-x-5
-        md:space-x-7
-      "
+          flex 
+          justify-end 
+          items-center 
+          space-x-3
+          sm:space-x-5
+          md:space-x-7
+        "
       >
         <button
           className="
@@ -165,7 +161,7 @@ const Header = ({ navItems }) => {
             w-10 
             relative
           "
-          onClick={toggleCart}
+          onClick={() => toggleOverlay("CART")}
         >
           {itemCount > 0 && (
             <span
@@ -190,13 +186,13 @@ const Header = ({ navItems }) => {
         </button>
         <button
           className="
-          h-10 
-          w-10
-          rounded-full
-          hover:outline
-          hover:outline-2
-          hover:outline-orange
-        "
+            h-10 
+            w-10
+            rounded-full
+            hover:outline
+            hover:outline-2
+            hover:outline-orange
+          "
         >
           <img
             src={avatar}
