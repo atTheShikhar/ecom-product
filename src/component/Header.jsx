@@ -1,8 +1,4 @@
 import PropTypes from "prop-types";
-import logo from "../assets/logo.svg";
-import cart from "../assets/icon-cart.svg";
-import avatar from "../assets/image-avatar.png";
-import menu from "../assets/icon-menu.svg";
 import Cart from "./Cart";
 import { useSelector } from "react-redux";
 import useOverlay from "../hooks/useOverlay";
@@ -49,7 +45,7 @@ const Header = ({ navItems }) => {
           className="p-4 cursor-pointer md:hidden"
           onClick={() => toggleOverlay("MENU")}
         >
-          <img src={menu} alt="menu" />
+          <img src="src/assets/icon-menu.svg" alt="menu" />
         </button>
         <a
           href="#"
@@ -59,7 +55,7 @@ const Header = ({ navItems }) => {
             md:ml-0 
           "
         >
-          <img src={logo} alt="sneakers logo" />
+          <img src="src/assets/logo.svg" alt="sneakers logo" />
         </a>
 
         <div
@@ -191,7 +187,7 @@ const Header = ({ navItems }) => {
               {itemCount}
             </span>
           )}
-          <img src={cart} alt="cart" className="m-auto" />
+          <img src="src/assets/icon-cart.svg" alt="cart" className="m-auto" />
         </button>
         <button
           className="
@@ -204,7 +200,7 @@ const Header = ({ navItems }) => {
           "
         >
           <img
-            src={avatar}
+            src="src/assets/image-avatar.png"
             alt="avatar"
             className="
               m-auto 

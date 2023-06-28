@@ -61,7 +61,7 @@ const Cart = () => {
                 "
               >
                 <img
-                  src="../src/assets/prod1thumb.jpg"
+                  src={item.thumbnail}
                   alt="product"
                   className="
                     h-14

@@ -7,7 +7,8 @@ example state element:
         name: <string>,
         unitPrice: <number>,
         itemCount: <number>,
-        currency: <string>
+        currency: <string>,
+        thumbnail: <string>
     }
 */
 const initialCartState = {

@@ -16,6 +16,7 @@ const Content = ({ className, product }) => {
         unitPrice: product.unitPrice,
         itemCount: itemCount > 0 ? itemCount : 1,
         currency: product.currency,
+        thumbnail: product.thumbnail,
       })
     );
   };
@@ -176,7 +177,11 @@ const Content = ({ className, product }) => {
           "
           onClick={addToCart}
         >
-          <img src="../src/assets/icon-cart.svg" alt="cart" />
+          <img
+            className="brightness-0 invert w-5"
+            src="src/assets/icon-cart.svg"
+            alt="cart"
+          />
           <span
             className="
               text-white
@@ -202,6 +207,7 @@ Content.propTypes = {
     offerPercent: PropTypes.number,
     unitPrice: PropTypes.number,
     currency: PropTypes.string,
+    thumbnail: PropTypes.string,
   }),
 };
 
