@@ -3,6 +3,9 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addItems } from "../redux_slices/cartSlice";
 import { formatPrice } from "../utils";
+import plusIcon from "../assets/icon-plus.svg";
+import minusIcon from "../assets/icon-minus.svg";
+import cartIcon from "../assets/icon-cart.svg";
 
 const Content = ({ className, product }) => {
   const [itemCount, setCount] = useState(1);
@@ -142,7 +145,7 @@ const Content = ({ className, product }) => {
               });
             }}
           >
-            <img src="/icon-minus.svg" alt="decrease item count" />
+            <img src={minusIcon} alt="decrease item count" />
           </button>
           <div className="font-bold">{itemCount}</div>
           <button
@@ -158,7 +161,7 @@ const Content = ({ className, product }) => {
               });
             }}
           >
-            <img src="/icon-plus.svg" alt="increase item count" />
+            <img src={plusIcon} alt="increase item count" />
           </button>
         </div>
 
@@ -177,11 +180,7 @@ const Content = ({ className, product }) => {
           "
           onClick={addToCart}
         >
-          <img
-            className="brightness-0 invert w-5"
-            src="/icon-cart.svg"
-            alt="cart"
-          />
+          <img className="brightness-0 invert w-5" src={cartIcon} alt="cart" />
           <span
             className="
               text-white

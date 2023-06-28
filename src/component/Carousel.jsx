@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import useOverlay from "../hooks/useOverlay";
+import prevIcon from "../assets/icon-prev.svg";
+import nextIcon from "../assets/icon-next.svg";
 
 const navPostions = {
   inner: "1rem",
@@ -11,13 +13,13 @@ const navPostions = {
 const Carousel = ({ settings, className }) => {
   const buttons = [
     {
-      icon: "/icon-prev.svg",
+      icon: prevIcon,
       alt: "previous image",
       name: "PREV",
       position: { left: navPostions[settings.navbarPosition] },
     },
     {
-      icon: "/icon-next.svg",
+      icon: nextIcon,
       alt: "next image",
       name: "NEXT",
       position: { right: navPostions[settings.navbarPosition] },

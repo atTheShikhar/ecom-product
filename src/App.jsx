@@ -2,6 +2,15 @@ import Carousel from "./component/Carousel";
 import Header from "./component/Header";
 import Content from "./component/Content";
 import useOverlay from "./hooks/useOverlay";
+import prod1 from "./assets/prod1.jpg";
+import prod2 from "./assets/prod2.jpg";
+import prod3 from "./assets/prod3.jpg";
+import prod4 from "./assets/prod4.jpg";
+import prod1thumb from "./assets/prod1thumb.jpg";
+import prod2thumb from "./assets/prod2thumb.jpg";
+import prod3thumb from "./assets/prod3thumb.jpg";
+import prod4thumb from "./assets/prod4thumb.jpg";
+import closeIcon from "./assets/icon-close.svg";
 
 const navItems = [
   {
@@ -28,20 +37,20 @@ const navItems = [
 
 const productImages = [
   {
-    image: "/prod1.jpg",
-    thumbnail: "/prod1thumb.jpg",
+    image: prod1,
+    thumbnail: prod1thumb,
   },
   {
-    image: "/prod2.jpg",
-    thumbnail: "/prod2thumb.jpg",
+    image: prod2,
+    thumbnail: prod2thumb,
   },
   {
-    image: "/prod3.jpg",
-    thumbnail: "/prod3thumb.jpg",
+    image: prod3,
+    thumbnail: prod3thumb,
   },
   {
-    image: "/prod4.jpg",
-    thumbnail: "/prod4thumb.jpg",
+    image: prod4,
+    thumbnail: prod4thumb,
   },
 ];
 
@@ -54,7 +63,7 @@ const product = {
   offerPercent: 50,
   unitPrice: 125.0,
   currency: "$",
-  thumbnail: "/prod1thumb.jpg",
+  thumbnail: prod1thumb,
 };
 
 function App() {
@@ -98,7 +107,7 @@ function App() {
               <div className="flex justify-end mb-6">
                 <button onClick={() => toggleOverlay("LIGHTBOX")}>
                   <img
-                    src="/icon-close.svg"
+                    src={closeIcon}
                     className="brightness-0 invert w-4"
                     alt="close lightbox"
                   />

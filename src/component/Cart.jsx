@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { removeItems } from "../redux_slices/cartSlice";
 import { formatPrice } from "../utils";
+import deleteIcon from "../assets/icon-delete.svg";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
@@ -96,7 +97,7 @@ const Cart = () => {
                   removeFromCart(item.itemId);
                 }}
               >
-                <img src="/icon-delete.svg" alt="remove from cart" />
+                <img src={deleteIcon} alt="remove from cart" />
               </button>
             </div>
           ))}
