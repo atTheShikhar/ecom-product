@@ -28,20 +28,20 @@ const navItems = [
 
 const productImages = [
   {
-    image: "src/assets/prod1.jpg",
-    thumbnail: "src/assets/prod1thumb.jpg",
+    image: "/prod1.jpg",
+    thumbnail: "/prod1thumb.jpg",
   },
   {
-    image: "src/assets/prod2.jpg",
-    thumbnail: "src/assets/prod2thumb.jpg",
+    image: "/prod2.jpg",
+    thumbnail: "/prod2thumb.jpg",
   },
   {
-    image: "src/assets/prod3.jpg",
-    thumbnail: "src/assets/prod3thumb.jpg",
+    image: "/prod3.jpg",
+    thumbnail: "/prod3thumb.jpg",
   },
   {
-    image: "src/assets/prod4.jpg",
-    thumbnail: "src/assets/prod4thumb.jpg",
+    image: "/prod4.jpg",
+    thumbnail: "/prod4thumb.jpg",
   },
 ];
 
@@ -54,7 +54,7 @@ const product = {
   offerPercent: 50,
   unitPrice: 125.0,
   currency: "$",
-  thumbnail: "src/assets/prod1thumb.jpg",
+  thumbnail: "/prod1thumb.jpg",
 };
 
 function App() {
@@ -98,7 +98,7 @@ function App() {
               <div className="flex justify-end mb-6">
                 <button onClick={() => toggleOverlay("LIGHTBOX")}>
                   <img
-                    src="src/assets/icon-close.svg"
+                    src="/icon-close.svg"
                     className="brightness-0 invert w-4"
                     alt="close lightbox"
                   />

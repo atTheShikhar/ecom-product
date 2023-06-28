@@ -96,10 +96,7 @@ const Cart = () => {
                   removeFromCart(item.itemId);
                 }}
               >
-                <img
-                  src="../src/assets/icon-delete.svg"
-                  alt="remove from cart"
-                />
+                <img src="/icon-delete.svg" alt="remove from cart" />
               </button>
             </div>
           ))}

@@ -45,7 +45,7 @@ const Header = ({ navItems }) => {
           className="p-4 cursor-pointer md:hidden"
           onClick={() => toggleOverlay("MENU")}
         >
-          <img src="src/assets/icon-menu.svg" alt="menu" />
+          <img src="/icon-menu.svg" alt="menu" />
         </button>
         <a
           href="#"
@@ -55,7 +55,7 @@ const Header = ({ navItems }) => {
             md:ml-0 
           "
         >
-          <img src="src/assets/logo.svg" alt="sneakers logo" />
+          <img src="/logo.svg" alt="sneakers logo" />
         </a>
 
         <div
@@ -90,7 +90,7 @@ const Header = ({ navItems }) => {
               className="p-4 md:hidden"
               onClick={() => toggleOverlay("MENU")}
             >
-              <img src="../src/assets/icon-close.svg" alt="close menu" />
+              <img src="/icon-close.svg" alt="close menu" />
             </button>
             <ul
               className="
@@ -187,7 +187,7 @@ const Header = ({ navItems }) => {
               {itemCount}
             </span>
           )}
-          <img src="src/assets/icon-cart.svg" alt="cart" className="m-auto" />
+          <img src="/icon-cart.svg" alt="cart" className="m-auto" />
         </button>
         <button
           className="
@@ -200,7 +200,7 @@ const Header = ({ navItems }) => {
           "
         >
           <img
-            src="src/assets/image-avatar.png"
+            src="/image-avatar.png"
             alt="avatar"
             className="
               m-auto 

@@ -11,13 +11,13 @@ const navPostions = {
 const Carousel = ({ settings, className }) => {
   const buttons = [
     {
-      icon: "../src/assets/icon-prev.svg",
+      icon: "/icon-prev.svg",
       alt: "previous image",
       name: "PREV",
       position: { left: navPostions[settings.navbarPosition] },
     },
     {
-      icon: "../src/assets/icon-next.svg",
+      icon: "/icon-next.svg",
       alt: "next image",
       name: "NEXT",
       position: { right: navPostions[settings.navbarPosition] },

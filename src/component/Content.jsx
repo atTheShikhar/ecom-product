@@ -142,7 +142,7 @@ const Content = ({ className, product }) => {
               });
             }}
           >
-            <img src="../src/assets/icon-minus.svg" alt="decrease item count" />
+            <img src="/icon-minus.svg" alt="decrease item count" />
           </button>
           <div className="font-bold">{itemCount}</div>
           <button
@@ -158,7 +158,7 @@ const Content = ({ className, product }) => {
               });
             }}
           >
-            <img src="../src/assets/icon-plus.svg" alt="increase item count" />
+            <img src="/icon-plus.svg" alt="increase item count" />
           </button>
         </div>
 
@@ -179,7 +179,7 @@ const Content = ({ className, product }) => {
         >
           <img
             className="brightness-0 invert w-5"
-            src="src/assets/icon-cart.svg"
+            src="/icon-cart.svg"
             alt="cart"
           />
           <span
